@@ -7,30 +7,8 @@ use threads::shared;
 use Sys::Syslog qw(:standard :macros);
 
 # ABSTRACT: collectd plugin for sending collectd metrics to syslog
-our $VERSION = '1.001'; # VERSION
+our $VERSION = '1.002'; # VERSION
 
-=head1 SYNOPSIS
-
-This is a collectd plugin for sending collectd metrics to syslog.
-
-In your collectd config:
-
-    <LoadPlugin "perl">
-    	Globals true
-    </LoadPlugin>
-
-    <Plugin "perl">
-      BaseName "Collectd::Plugins"
-      LoadPlugin "WriteSyslogGraphite"
-
-    	<Plugin "WriteSyslogGraphite">
-    	  level "info"
-    	  facility "local0"
-    	  ident   "metric"
-    	</Plugin>
-    </Plugin>
-
-=cut
 
 my $level = 'info';
 my $facility = 'local0';
@@ -94,3 +72,49 @@ plugin_register (TYPE_WRITE, "WriteSyslogGraphite", "write_syslog_graphite_write
 plugin_register (TYPE_INIT, "WriteSyslogGraphite", "write_syslog_graphite_init");
 
 1;
+
+__END__
+=pod
+
+=head1 NAME
+
+Collectd::Plugins::WriteSyslogGraphite - collectd plugin for sending collectd metrics to syslog
+
+=head1 VERSION
+
+version 1.002
+
+=head1 SYNOPSIS
+
+This is a collectd plugin for sending collectd metrics to syslog.
+
+In your collectd config:
+
+    <LoadPlugin "perl">
+    	Globals true
+    </LoadPlugin>
+
+    <Plugin "perl">
+      BaseName "Collectd::Plugins"
+      LoadPlugin "WriteSyslogGraphite"
+
+    	<Plugin "WriteSyslogGraphite">
+    	  level "info"
+    	  facility "local0"
+    	  ident   "metric"
+    	</Plugin>
+    </Plugin>
+
+=head1 AUTHOR
+
+Markus Benning <ich@markusbenning.de>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2014 by Markus Benning.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
+

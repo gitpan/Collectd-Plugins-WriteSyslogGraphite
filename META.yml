@@ -21,4 +21,4 @@ requires:
 resources:
   bugtracker: http://rt.cpan.org/NoAuth/Bugs.html?Dist=Collectd-Plugins-WriteSyslogGraphite
   repository: https://github.com/benningm/Collectd-Plugins-WriteSyslogGraphite
-version: 1.001
+version: 1.002
